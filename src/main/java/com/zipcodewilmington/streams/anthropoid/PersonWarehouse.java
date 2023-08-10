@@ -47,7 +47,7 @@ public final class PersonWarehouse implements Iterable<Person> {
      */ //TODO
     public Stream<Person> getUniquelyNamedPeople() {
 
-        //return people.stream().filter(person -> person.getName().c) ;
+        //return people.stream().distinct().collect(Collectors.toList()).stream() ;
         return null;
     }
 
@@ -73,8 +73,8 @@ public final class PersonWarehouse implements Iterable<Person> {
      */ // TODO
     public Map<Long, String> getIdToNameMap() {
 
-        return people.stream()
-                .collect(Collectors.toMap(Person::getPersonalId, sPerson::getName));
+        return people.stream().collect(Collectors.toMap(Person::getPersonalId, Person::getName));
+        //people.stream().collect(Collectors.toMap(person -> person.getPersonalId(), person -> person.getName()));
         //Map<Integer, User> userMap = Arrays.asList(user1, user2, user3).stream().collect(Collectors.toMap(user -> user.getUserId(), user -> user));
     }
 
